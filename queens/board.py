@@ -27,21 +27,23 @@ class board():
     def goal_test(self) -> bool: # Función que retorna si el estado actual es el objetivo
         return self.attacks() == 0
     
-    def __repr__(self) -> str:
-        return "state: " + str(self.queens) + ", level: " + str(self.level)
-    
-def expand(board_f:board) -> list: # Función para obtener
+    def expand(self) -> list: # Función para obtener
         expanded:list[board] = []
         aux:list[int] = []
-        for i in range(board_f.size):
+        for i in range(self.size):
             aux = []
-            aux += board_f.queens
-            if aux[i] + 1 < board_f.size:
+            aux += self.queens
+            if aux[i] + 1 < self.size:
                 aux[i] += 1
-                expanded.append(board(board_f.level + 1, board_f.size, aux))
+                expanded.append(board(self.level + 1, self.size, aux))
             else:
                 next          
         return expanded
+    
+    def __repr__(self) -> str:
+        return "state: " + str(self.queens) + ", level: " + str(self.level)
+    
+
 
 def dls(frontier:list[board], limit:int) -> str: # Función de busqueda Depth-Limited Search
     if frontier == []:
@@ -53,7 +55,7 @@ def dls(frontier:list[board], limit:int) -> str: # Función de busqueda Depth-Li
         return "Solution found: " + str(current_state)
     if current_level >= limit:
         return "Limit reached"
-    off_springs = expand(current_state)
+    off_springs = current_state.expand()
     frontier = off_springs + frontier
 
     return dls(frontier, limit)
