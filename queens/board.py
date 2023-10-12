@@ -2,15 +2,17 @@ class board():
 
     level = 0
     queens = []
+    visited:list[list[int]] = []
 
     def __init__(self, level:int = 0, size:int = 4, queens:list[int] = []) -> None:
         self.level = level
         self.size = size
         if queens == []:
             for i in range(size):
-                self.queens.append(1)
+                self.queens.append(0)
         else:
             self.queens = queens
+        self.visited.append(self.queens)
             
 
     def attacks(self) -> int: # Función que retorna el número de ataques en un tablero
@@ -35,9 +37,9 @@ class board():
             aux += self.queens
             if aux[i] + 1 < self.size:
                 aux[i] += 1
-                expanded.append(board(self.level + 1, self.size, aux))
-            else:
-                next          
+                if not(self.visited.__contains__(aux)):
+                    expanded.append(board(self.level + 1, self.size, aux))
+                    self.visited.append(aux)        
         return expanded
     
     def __repr__(self) -> str:

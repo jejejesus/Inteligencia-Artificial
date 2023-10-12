@@ -1,7 +1,7 @@
 from board import board, dls
 
 def main():
-    game = board(size=4, queens=[1, 3, 0, 1])
+    game = board(size=4, queens=[0, 0, 0, 0])
     frontier = []
     frontier.append(game)
 
