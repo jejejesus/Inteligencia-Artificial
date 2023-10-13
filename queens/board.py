@@ -8,8 +8,7 @@ class board():
         self.level = level
         self.size = size
         if queens == []:
-            for i in range(size):
-                self.queens.append(0)
+            self.queens = [0] * size
         else:
             self.queens = queens
         self.visited.append(self.queens)
@@ -45,8 +44,6 @@ class board():
     def __repr__(self) -> str:
         return "state: " + str(self.queens) + ", level: " + str(self.level)
     
-
-
 def dls(frontier:list[board], limit:int) -> str: # Función de busqueda Depth-Limited Search
     if frontier == []:
         return "Solution not found or does not exist"
