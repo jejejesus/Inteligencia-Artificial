@@ -1,12 +1,10 @@
-from board import board, dls    
+from board import board, gs
 
 def main():
-    
-    game = board(size=5)
+    game = board(size=4)
     frontier = []
     frontier.append(game)
-    print(dls(frontier, 100))
-    
+    print(gs(frontier))
 
 if __name__ == "__main__":
     main()

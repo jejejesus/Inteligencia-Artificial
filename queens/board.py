@@ -42,8 +42,14 @@ class board():
         return expanded
     
     def __repr__(self) -> str:
-        return "state: " + str(self.queens) + ", level: " + str(self.level)
-    
+        return "state: " + str(self.queens) + ", attacks: " + str(self.attacks()) + ", level: " + str(self.level)
+''' 
+def evaluate(frontier:list[board]) -> list: # Función para evaluar los ataques de una lista
+    evaluated = []
+    for board in frontier:
+        evaluated.append([board.attacks(), board])
+    return evaluated
+'''
 def dls(frontier:list[board], limit:int) -> str: # Función de busqueda Depth-Limited Search
     if frontier == []:
         return "Solution not found or does not exist"
@@ -58,3 +64,17 @@ def dls(frontier:list[board], limit:int) -> str: # Función de busqueda Depth-Li
     frontier = off_springs + frontier
 
     return dls(frontier, limit)
+
+def gs(frontier:list[board]) -> str: # Función de busqueda Greedy Search
+    if frontier == []:
+        return "Solution not found or does not exist"
+    current_state:board = frontier.pop(0)
+    print(current_state)
+    if current_state.goal_test():
+        return "Solution found: " + str(current_state)
+    off_springs = current_state.expand()
+    off_springs.sort(key=board.attacks)
+    if off_springs == []:
+        return "Solution not found or does not exist"
+    
+    return gs([off_springs[0]])
