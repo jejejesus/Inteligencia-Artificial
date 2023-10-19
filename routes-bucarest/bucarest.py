@@ -44,4 +44,7 @@ class to_bucarest:
     }
 
     def __init__(self) -> None:
-        pass
+        
+        
+def a_star_search():
+    return
