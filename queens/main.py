@@ -1,5 +1,19 @@
 import board as lib
 
+def print_board(board:lib.board) -> None:
+    print_hline("┌", "─┬", "┐", board.size)
+    for i in range(board.size):
+        for j in range(board.size):
+            print("│X", end="") if board.queens[i] == j else print("│ ", end="")
+        print("│")
+        print_hline("├", "─┼", "┤", board.size) if i != board.size - 1 else print_hline("└", "─┴", "┘", board.size)
+def print_hline(first:str, middle:str, last:str, size:int) -> str:
+    line:str = first
+    line += middle * size
+    print(line[0:-1] + last)
+    
+
+
 def main():
     print("\n== N QUEENS ==\n")
     size = int(input("Board size: "))
@@ -18,16 +32,20 @@ def main():
     frontier = []
     frontier.append(game)
     if option == 1:
-        print(lib.bf_s(frontier))
+        message, goal = lib.bf_s(frontier)
     elif option == 2:
-        print(lib.df_s(frontier))
+        message, goal = lib.df_s(frontier)
     elif option == 3:
         limit = int(input(" Enter limit: "))
-        print(lib.dl_s(frontier, limit))
+        message, goal = lib.dl_s(frontier, limit)
     elif option == 4:
-        print(lib.idl_s(frontier, 2))
+        message, goal = lib.idl_s(frontier, 2)
     elif option == 5:
-        print(lib.g_s(frontier))
+        message, goal = lib.g_s(frontier)
+
+    print(message)
+    if goal != None: print_board(goal) 
+
     print("\nExecution ended...\n")
 
 if __name__ == "__main__":
