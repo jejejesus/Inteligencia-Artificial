@@ -2,12 +2,13 @@ import random
 import sys
 sys.setrecursionlimit(10000)
 
+visited:list[list[int]] = []
+
 class board():
 
     level = 0
     queens = []
-    visited:list[list[int]] = []
-
+    
     def __init__(self, level:int = 0, size:int = 4, queens:list[int] = []) -> None:
         self.level = level
         self.size = size
@@ -15,7 +16,7 @@ class board():
             self.queens = [0] * size
         else:
             self.queens = queens
-        self.visited.append(self.queens)
+        visited.append(self.queens)
             
 
     def attacks(self) -> int: # Función que retorna el número de ataques en un tablero
@@ -36,17 +37,17 @@ class board():
         expanded:list[board] = []
         aux:list[int] = []
         for i in range(self.size):
-            aux = []
             aux += self.queens
             if aux[i] + 1 < self.size:
                 aux[i] += 1  
-            else:
-                num = random.randint(0, self.size - 1)
-                aux[i] -= num
-            if not(self.visited.__contains__(aux)):
+            if not(visited.__contains__(aux)):
                 expanded.append(board(self.level + 1, self.size, aux))
-                self.visited.append(aux)  
+            aux = []
         return expanded
+    
+    def reset_visited(self) -> None: #Función para reinicial la lista de estados visitados
+        visited.clear
+        visited.append(self.queens)
     
     def __repr__(self) -> str:
         return "state: " + str(self.queens) + ", attacks: " + str(self.attacks()) + ", level: " + str(self.level)
@@ -91,10 +92,19 @@ def dl_s(frontier:list[board], limit:int) -> tuple[str, board]: # Función de b�
 
     return dl_s(frontier, limit)
 
-def idl_s(frontier:list[board], limit:int) -> tuple[str, board]: # Función de búsqueda Iterated Depth-Limited Search
+def idl_s(game:board, limit:int) -> tuple[str, board]: # Función de búsqueda Iterated Depth-Limited Search
     while True:
-        print(dl_s(frontier, limit))
+        frontier = []
+        frontier.append(game)
+        visited = [game.queens]
+        message, goal = dl_s(frontier, limit)
+        if goal != None:
+            return message, goal
+        print(message)
         limit += 2
+
+        
+
 
 def g_s(frontier:list[board]) -> tuple[str, board]: # Función de búsqueda Greedy Search
     if frontier == []:
@@ -104,8 +114,8 @@ def g_s(frontier:list[board]) -> tuple[str, board]: # Función de búsqueda Gree
     if current_state.goal_test():
         return "Solution found: " + str(current_state), current_state
     off_springs = current_state.expand()
-    off_springs.sort(key=board.attacks)
     if off_springs == []:
         return "Solution not found or does not exist", None
-    
+    off_springs.sort(key=board.attacks)
+
     return g_s([off_springs[0]])

@@ -39,7 +39,7 @@ def main():
         limit = int(input(" Enter limit: "))
         message, goal = lib.dl_s(frontier, limit)
     elif option == 4:
-        message, goal = lib.idl_s(frontier, 2)
+        message, goal = lib.idl_s(game, 2)
     elif option == 5:
         message, goal = lib.g_s(frontier)
 
