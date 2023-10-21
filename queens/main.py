@@ -1,12 +1,12 @@
 import board as lib
 
 def print_board(board:lib.board) -> None:
-    print_hline("┌", "─┬", "┐", board.size)
+    print_hline("┌", "───┬", "┐", board.size)
     for i in range(board.size):
         for j in range(board.size):
-            print("│X", end="") if board.queens[i] == j else print("│ ", end="")
+            print("│ X ", end="") if board.queens[i] == j else print("│   ", end="")
         print("│")
-        print_hline("├", "─┼", "┤", board.size) if i != board.size - 1 else print_hline("└", "─┴", "┘", board.size)
+        print_hline("├", "───┼", "┤", board.size) if i != board.size - 1 else print_hline("└", "───┴", "┘", board.size)
 def print_hline(first:str, middle:str, last:str, size:int) -> str:
     line:str = first
     line += middle * size
@@ -27,9 +27,10 @@ def main():
     option = int(input("Select algorithm: "))
     print()
 
-    game = lib.board(size=size)
+    visited:list[list[int]] = []
+    game = lib.board(visited=visited, size=size)
     game.visited = [game.queens]
-    frontier = []
+    frontier:list[lib.board] = []
     frontier.append(game)
     if option == 1:
         message, goal = lib.bf_s(frontier)

@@ -2,21 +2,21 @@ import random
 import sys
 sys.setrecursionlimit(10000)
 
-visited:list[list[int]] = []
-
 class board():
 
     level = 0
     queens = []
+    visited:list[list] = []
     
-    def __init__(self, level:int = 0, size:int = 4, queens:list[int] = []) -> None:
+    def __init__(self, visited:list, level:int = 0, size:int = 4, queens:list[int] = [],) -> None:
+        self.visited = visited
         self.level = level
         self.size = size
         if queens == []:
             self.queens = [0] * size
         else:
             self.queens = queens
-        visited.append(self.queens)
+        if not(self.visited.__contains__(self.queens)): self.visited.append(self.queens)
             
 
     def attacks(self) -> int: # Función que retorna el número de ataques en un tablero
@@ -40,14 +40,13 @@ class board():
             aux += self.queens
             if aux[i] + 1 < self.size:
                 aux[i] += 1  
-            if not(visited.__contains__(aux)):
-                expanded.append(board(self.level + 1, self.size, aux))
+            if not(self.visited.__contains__(aux)):
+                expanded.append(board(visited=self.visited, level=self.level + 1, size=self.size, queens=aux))
             aux = []
         return expanded
     
     def reset_visited(self) -> None: #Función para reinicial la lista de estados visitados
-        visited.clear
-        visited.append(self.queens)
+        self.visited.clear
     
     def __repr__(self) -> str:
         return "state: " + str(self.queens) + ", attacks: " + str(self.attacks()) + ", level: " + str(self.level)
@@ -96,15 +95,12 @@ def idl_s(game:board, limit:int) -> tuple[str, board]: # Función de búsqueda I
     while True:
         frontier = []
         frontier.append(game)
-        visited = [game.queens]
+        game.visited = []
         message, goal = dl_s(frontier, limit)
         if goal != None:
-            return message, goal
+            return message + ", limit: " + str(limit), goal
         print(message)
         limit += 2
-
-        
-
 
 def g_s(frontier:list[board]) -> tuple[str, board]: # Función de búsqueda Greedy Search
     if frontier == []:
