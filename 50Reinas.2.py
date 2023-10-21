@@ -2,7 +2,7 @@ import sys
 import random
 
 class Tablero:
-    def __init__(self, dato):
+    def _init_(self, dato):
         self.vector = dato
         self.totalAtaques = None
 
@@ -44,22 +44,27 @@ def Sort(os):
     return [random.choice(candidatos)]
 
 def busquedaVoraz(f):
-    while len(f) > 0:
+    if len(f) == 0:
+        print("No se encontró resultado")
+        return False
+    else:
         edo_act = f.pop(0)
         print(edo_act.vector)
-        if goalTest(edo_act.vector):
-            print("Se encontró una solución:")
-            print(edo_act.vector)
-            return True
-        else:
-            os = expand(edo_act)
-            os = Evaluate(os)
-            os.sort(key=lambda tablero: tablero.totalAtaques)
-            if len(os) > 0:
-                os = Sort(os)
-                f = [os[0]]
-    print("No se encontró resultado")
-    return False
+
+    if goalTest(edo_act.vector):
+        print("Se encontró una solución:")
+        print(edo_act.vector)
+        return True
+
+    os = expand(edo_act)
+    os = Evaluate(os)
+    os.sort(key=lambda tablero: tablero.totalAtaques)
+
+    if len(os) > 0:
+        os = Sort(os)
+        f = [os[0]]
+
+    return busquedaVoraz(f)
 
 sys.setrecursionlimit(1000000)
 

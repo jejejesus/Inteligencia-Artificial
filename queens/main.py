@@ -12,11 +12,16 @@ def print_hline(first:str, middle:str, last:str, size:int) -> str:
     line += middle * size
     print(line[0:-1] + last)
     
+def main() -> None:
+    print("\n== N-QUEENS ==\n")
 
-
-def main():
-    print("\n== N QUEENS ==\n")
-    size = int(input("Board size: "))
+    flag = True
+    while flag:
+        try:
+            size = int(input("Board size: "))
+            flag = False
+        except:
+            flag = True
     print("\nAlgorithms:\n" +
             "  1.- Breadth-First Search\n" +
             "  2.- Depth-First Search\n" +
@@ -24,7 +29,14 @@ def main():
             "  4.- Iterated Depth-Limited Search\n" +
             "  5.- Greedy Search\n" +
             "  0.- Exit")
-    option = int(input("Select algorithm: "))
+    flag = True
+    while flag:
+        try:
+            option = int(input("Select algorithm: "))
+            if option > -1 and option < 6:
+                flag = False
+        except:
+            flag = True
     print()
 
     visited:list[list[int]] = []
@@ -37,10 +49,25 @@ def main():
     elif option == 2:
         message, goal = lib.df_s(frontier)
     elif option == 3:
-        limit = int(input(" Enter limit: "))
+        flag = True
+        while flag:
+            try:
+                limit = int(input(" Enter limit: "))
+                if limit > -1:
+                    flag = False
+            except:
+                flag = True
         message, goal = lib.dl_s(frontier, limit)
     elif option == 4:
-        message, goal = lib.idl_s(game, 2)
+        flag = True
+        while flag:
+            try:
+                increment = int(input(" Enter increment: "))
+                if increment > -1:
+                    flag = False
+            except:
+                flag = True
+        message, goal = lib.idl_s(game, 2, increment)
     elif option == 5:
         message, goal = lib.g_s(frontier)
 

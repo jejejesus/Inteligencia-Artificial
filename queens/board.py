@@ -1,6 +1,6 @@
-import random
-import sys
-sys.setrecursionlimit(10000)
+from random import randrange
+from sys import setrecursionlimit
+setrecursionlimit(10000)
 
 class board():
 
@@ -33,13 +33,27 @@ class board():
     def goal_test(self) -> bool: # Función que retorna si el estado actual es el objetivo
         return self.attacks() == 0
     
-    def expand(self) -> list: # Función para obtener
+    def expand(self) -> list: # Función para obtener la desendencia de un estado
         expanded:list[board] = []
         aux:list[int] = []
         for i in range(self.size):
             aux += self.queens
             if aux[i] + 1 < self.size:
                 aux[i] += 1  
+            if not(self.visited.__contains__(aux)):
+                expanded.append(board(visited=self.visited, level=self.level + 1, size=self.size, queens=aux))
+            aux = []
+        return expanded
+    
+    def expand_r(self) -> list: # Función para obtener la desendencia de un estado con el algorítmo Greedy Search
+        expanded:list[board] = []
+        aux:list[int] = []
+        for i in range(self.size):
+            aux += self.queens
+            if aux[i] + 1 < self.size:
+                aux[i] += 1
+            else:
+                aux[i] = randrange(1, self.size, 1)
             if not(self.visited.__contains__(aux)):
                 expanded.append(board(visited=self.visited, level=self.level + 1, size=self.size, queens=aux))
             aux = []
@@ -91,7 +105,7 @@ def dl_s(frontier:list[board], limit:int) -> tuple[str, board]: # Función de b�
 
     return dl_s(frontier, limit)
 
-def idl_s(game:board, limit:int) -> tuple[str, board]: # Función de búsqueda Iterated Depth-Limited Search
+def idl_s(game:board, limit:int, increment:int) -> tuple[str, board]: # Función de búsqueda Iterated Depth-Limited Search
     while True:
         frontier = []
         frontier.append(game)
@@ -100,7 +114,7 @@ def idl_s(game:board, limit:int) -> tuple[str, board]: # Función de búsqueda I
         if goal != None:
             return message + ", limit: " + str(limit), goal
         print(message)
-        limit += 2
+        limit += increment
 
 def g_s(frontier:list[board]) -> tuple[str, board]: # Función de búsqueda Greedy Search
     if frontier == []:
@@ -109,7 +123,7 @@ def g_s(frontier:list[board]) -> tuple[str, board]: # Función de búsqueda Gree
     print(current_state)
     if current_state.goal_test():
         return "Solution found: " + str(current_state), current_state
-    off_springs = current_state.expand()
+    off_springs = current_state.expand_r()
     if off_springs == []:
         return "Solution not found or does not exist", None
     off_springs.sort(key=board.attacks)
