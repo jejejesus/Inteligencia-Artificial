@@ -1,3 +1,6 @@
+import sys
+sys.setrecursionlimit(10000)
+
 class board():
 
     level = 0
@@ -43,14 +46,33 @@ class board():
     
     def __repr__(self) -> str:
         return "state: " + str(self.queens) + ", attacks: " + str(self.attacks()) + ", level: " + str(self.level)
-''' 
-def evaluate(frontier:list[board]) -> list: # Función para evaluar los ataques de una lista
-    evaluated = []
-    for board in frontier:
-        evaluated.append([board.attacks(), board])
-    return evaluated
-'''
-def dls(frontier:list[board], limit:int) -> str: # Función de busqueda Depth-Limited Search
+    
+def bf_s(frontier:list[board]) -> str: #Función de búsqueda Breadth-First Search
+    if frontier == []:
+        return "Solution not found or does not exist"
+    current_state:board = frontier.pop(0)
+    print(current_state)
+    if current_state.goal_test():
+        return "Solution found: " + str(current_state)
+    off_springs = current_state.expand()
+    frontier = frontier + off_springs
+
+    return bf_s(frontier)
+
+def df_s(frontier:list[board]) -> str: #Función de búsqueda Depth-First Search
+    if frontier == []:
+        return "Solution not found or does not exist"
+    current_state:board = frontier.pop(0)
+    print(current_state)
+    if current_state.goal_test():
+        return "Solution found: " + str(current_state)
+    off_springs = current_state.expand()
+    frontier = off_springs + frontier
+
+    return df_s(frontier)
+
+
+def dl_s(frontier:list[board], limit:int) -> str: # Función de búsqueda Depth-Limited Search
     if frontier == []:
         return "Solution not found or does not exist"
     current_state:board = frontier.pop(0)
@@ -63,9 +85,14 @@ def dls(frontier:list[board], limit:int) -> str: # Función de busqueda Depth-Li
     off_springs = current_state.expand()
     frontier = off_springs + frontier
 
-    return dls(frontier, limit)
+    return dl_s(frontier, limit)
 
-def gs(frontier:list[board]) -> str: # Función de busqueda Greedy Search
+def idl_s(frontier:list[board], limit:int) -> str: # Función de búsqueda Iterated Depth-Limited Search
+    while True:
+        print(dl_s(frontier, limit))
+        limit += 2
+
+def g_s(frontier:list[board]) -> str: # Función de búsqueda Greedy Search
     if frontier == []:
         return "Solution not found or does not exist"
     current_state:board = frontier.pop(0)
@@ -77,4 +104,4 @@ def gs(frontier:list[board]) -> str: # Función de busqueda Greedy Search
     if off_springs == []:
         return "Solution not found or does not exist"
     
-    return gs([off_springs[0]])
+    return g_s([off_springs[0]])

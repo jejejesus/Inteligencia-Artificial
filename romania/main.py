@@ -1,4 +1,4 @@
-from bucarest import to_bucarest
+from romania import to_bucarest
 
 def main():
     buca = to_bucarest()
