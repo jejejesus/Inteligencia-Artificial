@@ -123,7 +123,7 @@ def g_s(frontier:list[board]) -> tuple[str, board]: # Función de búsqueda Gree
     print(current_state)
     if current_state.goal_test():
         return "Solution found: " + str(current_state), current_state
-    off_springs = current_state.expand_r()
+    off_springs = current_state.expand()
     if off_springs == []:
         return "Solution not found or does not exist", None
     off_springs.sort(key=board.attacks)

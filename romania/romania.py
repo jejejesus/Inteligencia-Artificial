@@ -1,24 +1,26 @@
-routes = [[None,None,None,None,None,None,None,None,None,None,None,None,None,None,None, 140, 118,None,None,  75],
-          [None,None,None,None,None, 211,  90,None,None,None,None,None,None, 101,None,None,None,  85,None,None],
-          [None,None,None, 120,None,None,None,None,None,None,None,None,None, 138, 146,None,None,None,None,None],
-          [None,None, 120,None,None,None,None,None,None,None,  75,None,None,None,None,None,None,None,None,None],
-          [None,None,None,None,None,None,None,  86,None,None,None,None,None,None,None,None,None,None,None,None],
-          [None, 211,None,None,None,None,None,None,None,None,None,None,None,None,None,  99,None,None,None,None],
-          [None,  90,None,None,None,None,None,None,None,None,None,None,None,None,None,None,None,None,None,None],
-          [None,None,None,None,  86,None,None,None,None,None,None,None,None,None,None,None,None,  98,None,None],
-          [None,None,None,None,None,None,None,None,None,None,None,  87,None,None,None,None,None,None,  92,None],
-          [None,None,None,None,None,None,None,None,None,None,  70,None,None,None,None,None, 111,None,None,None],
-          [None,None,None,  75,None,None,None,None,None,  70,None,None,None,None,None,None,None,None,None,None],
-          [None,None,None,None,None,None,None,None,  87,None,None,None,None,None,None,None,None,None,None,None],
-          [None,None,None,None,None,None,None,None,None,None,None,None,None,None,None, 151,None,None,None,  71],
-          [None, 101, 138,None,None,None,None,None,None,None,None,None,None,None,  97,None,None,None,None,None],
-          [None,None, 146,None,None,None,None,None,None,None,None,None,None,  97,None,  80,None,None,None,None],
-          [ 140,None,None,None,None,  99,None,None,None,None,None,None, 151,None,  80,None,None,None,None,None],
-          [ 118,None,None,None,None,None,None,None,None, 111,None,None,None,None,None,None,None,None,None,None],
-          [None,  85,None,None,None,None,None,  98,None,None,None,None,None,None,None,None,None,None, 142,None],
-          [None,None,None,None,None,None,None,None,  92,None,None,None,None,None,None,None,None, 142,None,None],
-          [  75,None,None,None,None,None,None,None,None,None,None,None,  71,None,None,None,None,None,None,None]]
-    
+routes = {
+    'Arad': {'Zerind': 75,'Sibiu': 140,'Timisoara': 118},
+    'Bucarest': {'Giurgiu': 90, 'Urziceni': 85, 'Pitesti': 101,'Fagaras': 211},
+    'Craiova': {'Dobreta': 120, 'Pitesti': 138, 'Rimnicu Vilcea': 146},
+    'Dovreta': {'Mehadia': 75, 'Craiova': 120},
+    'Eforie': {'Hirsova': 86},
+    'Fagaras': {'Sibiu': 99, 'Bucarest': 211},
+    'Giurgiu': {'Bucarest': 90},
+    'Hirsova': { 'Eforie': 86,'Urziceni': 98},
+    'Iasi': { 'Neamt': 87, 'Vaslui': 92},
+    'Lugoj': { 'Mehadia': 70,'Timisoara': 111},
+    'Mehadia': {'Lugoj': 70, 'Dobreta': 75},
+    'Neamt': {'Iasi': 87},
+    'Oradea': {'Zerind': 71, 'Sibiu': 151},
+    'Pitesti': {'Rimnicu Vilcea': 97, 'Bucarest': 101, 'Craiova': 138},
+    'Rimnicu Vilcea': {'Sibiu': 80,'Pitesti': 97, 'Craiova': 146},
+    'Sibiu': {'Rimnicu Vilcea': 80, 'Fagaras': 99,'Arad': 140, 'Oradea': 151},
+    'Timisoara': { 'Lugoj': 111, 'Arad': 118,},
+    'Urziceni': {'Bucarest': 85,'Hirsova': 98,'Vaslui': 142,},             
+    'Vaslui': {'Iasi': 92, 'Urziceni': 142},
+    'Zerind': { 'Oradea': 71,'Arad': 75},                      
+}
+
 lineal_distance = {
     "Arad": 266,
     "Bucarest": 0,
@@ -42,38 +44,39 @@ lineal_distance = {
     "Zerind": 374
 }
 
+
+traveled_distance:int = 0
+
 class to_bucarest:
-    frontier:list[str] = []
-    traveled_distance:int = 0
-
-    def __init__(self, actual_state:str) -> None:
-        self.frontier.append(actual_state)
-
-    def goal_test(state:str) -> bool:
-        return state == "Bucarest"
     
-    """
-        TO DO
-    def expand() -> list:
-        state = frontier[-1]
-        off_springs = []
-        for routes in 
-        return
-    """
+    def goal_test() -> bool:
+        for key in frontier[-1]:
+            return key == "Bucarest"
+
+    def expand() -> dict[str, int]:
         
-    def a_star_search(self):
-        if self.frontier == []:
+        return routes[frontier[-1]]
+    
+    def f(off_spring:dict[str, int]) -> int:
+        for key in off_spring: 
+            return (traveled_distance + off_spring[key]) + lineal_distance[key]
+    
+    def a_star_search(frontier:list[str]) -> str:
+        if frontier == []:
             return "Solution not found or does not exist"
-        actual_state = self.frontier.pop(0)
-        if self.goal_test(actual_state):
-            return "Solution found: " + str(self)
-        # off_springs = self.expand() TO DO
-        # off_springs
+        actual_state = frontier.pop(0)
+        if actual_state.goal_test():
+            return "Solution found: " + str(actual_state)
+        off_springs = actual_state.expand()
+        frontier += off_springs
+        frontier.sort(key=to_bucarest.f)
+
+        return a_star_search(frontier)
         
-        
+'''
     def __repr__(self) -> str:
         ruta:str = ""
         for state in self.frontier:
             ruta += state + " -> "
         return ruta[0:-4] + ", Total: " + str(self.traveled_distance)
-        
+'''        

@@ -1,7 +1,7 @@
 from romania import to_bucarest
 
 def main():
-    buca = to_bucarest()
+    return
 
 if __name__ == "__main__":
     main()
