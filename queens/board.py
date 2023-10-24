@@ -40,23 +40,39 @@ class board():
             aux += self.queens
             if aux[i] + 1 < self.size:
                 aux[i] += 1  
-            if not(self.visited.__contains__(aux)):
+            if aux not in self.visited:
                 expanded.append(board(visited=self.visited, level=self.level + 1, size=self.size, queens=aux))
             aux = []
         return expanded
     
+    '''
+    def expand(self):
+        copy = configuration.copy()
+        offspring_states = []
+        blacklist.append(configuration)
+
+        for row in range(0, n):
+            for column in range(0, n):
+                # Mueve la reina en la columna actual
+                new_value = (configuration[column] + row) % n
+                configuration[column] = new_value
+
+                if configuration not in blacklist:
+                    offspring_states.append(configuration)
+
+                configuration = copy.copy()
+
+        return offspring_states
+    '''
     def expand_r(self) -> list: # Función para obtener la desendencia de un estado con el algorítmo Greedy Search
-        expanded:list[board] = []
-        aux:list[int] = []
+        aux:list[int] = self.queens.copy
+        expanded:list[int] = []
         for i in range(self.size):
-            aux += self.queens
-            if aux[i] + 1 < self.size:
-                aux[i] += 1
-            else:
-                aux[i] = randrange(1, self.size, 1)
-            if not(self.visited.__contains__(aux)):
+            for j in range(self.size):
+                aux[j] = (aux[j] + i) % self.size
+            if aux not in self.visited:
                 expanded.append(board(visited=self.visited, level=self.level + 1, size=self.size, queens=aux))
-            aux = []
+        
         return expanded
     
     def reset_visited(self) -> None: #Función para reinicial la lista de estados visitados

@@ -2,11 +2,11 @@ import board as lib
 
 def print_board(board:lib.board) -> None:
     print_hline("┌", "───┬", "┐", board.size)
-    for i in range(board.size):
-        for j in range(board.size):
+    for j in range(board.size):
+        for i in range(board.size):
             print("│ X ", end="") if board.queens[i] == j else print("│   ", end="")
         print("│")
-        print_hline("├", "───┼", "┤", board.size) if i != board.size - 1 else print_hline("└", "───┴", "┘", board.size)
+        print_hline("├", "───┼", "┤", board.size) if j != board.size - 1 else print_hline("└", "───┴", "┘", board.size)
 def print_hline(first:str, middle:str, last:str, size:int) -> str:
     line:str = first
     line += middle * size
