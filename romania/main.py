@@ -1,8 +1,18 @@
-from romania import city, a_star_search, route_str
+from romania import city, a_star_search, route_str, lineal_distance
 from map import graph
 
 def main(): # Método main
-    initial_city = city("Arad") # Se declara la ciudad inicial
+    print("\n== ROMANIA ==\n")
+    flag = True
+    while flag:
+        try:
+            origin = str(input(" Origin city: "))
+        except:
+            flag = True
+        if origin in lineal_distance:
+            flag = False
+
+    initial_city = city(origin) # Se declara la ciudad inicial
     frontier:list[city] = []
     frontier.append(initial_city) # Se agrega a la frontera
     message, goal = a_star_search(frontier) # Llamanos a la función de búsqueda y recibimos un mensaje y la ciudad destino con la ruta recorrida
