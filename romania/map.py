@@ -1,4 +1,3 @@
-from math import sqrt
 import matplotlib.pyplot as plt
 import networkx as nx
 from romania import city, route_list
