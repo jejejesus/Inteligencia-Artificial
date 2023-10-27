@@ -39,11 +39,11 @@ def expand(configuration):
     offspring_states = []
     blacklist.append(configuration)
 
-    for row in range(0, n):
-        for column in range(0, n):
-            # Mueve la reina en la columna actual
-            new_value = (configuration[column] + row) % n
-            configuration[column] = new_value
+    for number in range(0, n):
+        for position in range(0, n):
+            # Calcula nuevo valor para la reina en posición actual
+            new_value = (configuration[position] + number) % n
+            configuration[position] = new_value
 
             if configuration not in blacklist:
                 offspring_states.append(configuration)
