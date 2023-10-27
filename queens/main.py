@@ -41,7 +41,6 @@ def main() -> None:
 
     visited:list[list[int]] = []
     game = lib.board(visited=visited, size=size)
-    game.visited = [game.queens]
     frontier:list[lib.board] = []
     frontier.append(game)
     if option == 1:

@@ -2,11 +2,23 @@ from romania import city, a_star_search, route_str, lineal_distance
 from map import graph
 
 def main(): # Método main
-    print("\n== ROMANIA ==\n")
+    print("\n== ROMANIA ==" + 
+        "\n\nCities:" +
+        "\n  - Arad      - Mehadia" + 
+        "\n  - Bucarest  - Neamt" + 
+        "\n  - Craiovia  - Oradea" + 
+        "\n  - Dobreta   - Pitesti" + 
+        "\n  - Eforie    - Rimnicu " + 
+        "\n  - Fagaras   - Sibiu" + 
+        "\n  - Giurgiu   - Timisoara" + 
+        "\n  - Hirsova   - Urziceni" + 
+        "\n  - Iasi      - Vaslui" + 
+        "\n  - Lugoj     - Zerind")
+    
     flag = True
     while flag:
         try:
-            origin = str(input(" Origin city: "))
+            origin = str(input(" Choose origin city: "))
         except:
             flag = True
         if origin in lineal_distance:
