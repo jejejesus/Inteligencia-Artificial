@@ -8,7 +8,7 @@ class board():
     queens = []
     visited:list[list] = []
     
-    def __init__(self, visited:list, level:int = 0, size:int = 4, queens:list[int] = [],) -> None:
+    def __init__(self, visited:list, level:int = 0, size:int = 4, queens:list[int] = []) -> None:
         self.visited = visited
         self.level = level
         self.size = size
@@ -37,7 +37,7 @@ class board():
         expanded:list[board] = []
         aux:list[int] = []
         for i in range(self.size):
-            aux += self.queens
+            aux = self.queens.copy
             if aux[i] + 1 < self.size:
                 aux[i] += 1  
             if aux not in self.visited:

@@ -2,11 +2,6 @@ import matplotlib.pyplot as plt
 import networkx as nx
 from romania import city, route_list
 
-class point:
-    def __init__(self, x:int, y:int) -> None:
-        self.x = x
-        self.y = y
-
 G = nx.Graph()
 nodes = ['Arad', 'Bucarest', 'Craiova', 'Dobreta', 'Eforie', 'Fagaras', 'Giurgiu', 'Hirsova', 'Iasi', 'Lugoj', 'Mehadia', 'Neamt', 'Oradea', 'Pitesti', 'Rimnicu', 'Sibiu', 'Timisoara', 'Urziceni', 'Vaslui','Zerind']
 

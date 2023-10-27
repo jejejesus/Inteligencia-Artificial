@@ -1,7 +1,8 @@
+import random
+
 n = 50                  # tablero (n * n)
 f = [0] * n             # [0, 0, 0, 0], n = 4
 blacklist = []          # configuraciones visitadas
-iterations = 0
 
 # Greedy Search
 def greedys(frontier):
@@ -13,7 +14,6 @@ def greedys(frontier):
         return False
     else:
         actual_state = frontier
-        
         if goal_test(actual_state):
             print("> Se encontró la solución para ", n, " reinas: ")
             print(actual_state)
@@ -21,10 +21,10 @@ def greedys(frontier):
             return True
         else:
             offsprings = expand(actual_state)
-            order = evaluate(offsprings)
-            offsprings = bubble_sort(offsprings, order)
+            attacks = evaluate(offsprings)
+            offsprings = bubble_sort(offsprings, attacks)
         if offsprings:
-            greedys(offsprings[0])
+            greedys(first_element(offsprings, attacks))
         else:
             greedys([])
 greedys.counter = 0
@@ -77,6 +77,17 @@ def bubble_sort(offsprings, attacks):
     return offsprings
 
 
+def first_element(offsprings, attacks):
+    least_attacks = attacks[0]
+    max_range = 0
+
+    for index in range(0, len(offsprings)):
+        if attacks[index] == least_attacks:
+            max_range += 1
+    
+    return offsprings[random.randint(0, max_range)]
+
+
 def attacks(configuration):
     attacks = 0
     
@@ -88,6 +99,7 @@ def attacks(configuration):
                 attacks += 2
 
     return attacks
+
 
 def print_board(board:list[int]):
     print_hline("┌", "───┬", "┐", len(board))

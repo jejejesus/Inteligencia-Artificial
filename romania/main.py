@@ -31,6 +31,5 @@ def main(): # Método main
     print("\n" + message + ": " + route_str(goal) + "\n")
     graph(goal)
 
-
 if __name__ == "__main__":
     main()

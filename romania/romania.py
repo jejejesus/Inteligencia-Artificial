@@ -84,7 +84,7 @@ def route_list(end_city:city, route:list[str] = []) -> list[str]: # Función que
     else:
         return route
 
-def a_star_search(frontier:list[city]) -> str: # Función de búsqueda A*
+def a_star_search(frontier:list[city]) -> tuple[str, city]: # Función de búsqueda A*
     if frontier == []: # Verificamos si frontier está vacío
         return "Solution not found", None
     current_city = frontier.pop(0) # Sacamos el primer elemento
