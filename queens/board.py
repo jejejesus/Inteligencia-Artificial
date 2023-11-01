@@ -37,7 +37,7 @@ class board():
         expanded:list[board] = []
         aux:list[int] = []
         for i in range(self.size):
-            aux = self.queens.copy
+            aux += self.queens
             if aux[i] + 1 < self.size:
                 aux[i] += 1  
             if aux not in self.visited:
