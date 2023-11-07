@@ -15,18 +15,8 @@ routes = {
 }
 # Tabla de distancias lineales a Bucarest
 lineal_distance = {
-    'Amsterdam': 1125,
-    'Andorra': 0,
-    'Berlin': 1424,
-    'Bern': 680,
-    'Brussels': 952,
-    'Lisbon': 994,
-    'Luxembourg': 865,
-    'Madrid': 494,
-    'Paris': 709,
-    'Rome': 908, 
-    'Vienna': 1321,
-    'Warsaw': 1816
+    'Amsterdam': {},
+    'Andorra': {'Amsterdam': 1125, 'Andorra': 0, 'Berlin': 1424, 'Bern': 680, 'Brussels': 952, 'Lisbon': 994, 'Luxembourg': 865, 'Madrid': 494, 'Paris': 709, 'Rome': 908, 'Vienna': 1321, 'Warsaw': 1816}
 }
 
 origin_city = 'Andorra'
@@ -40,7 +30,7 @@ class city: # Clase City
         self.distance_traveled = distance_traveled
 
     def goal_test(self) -> bool: # Función Goal Test para saber si estamos en la ciudad en la que empezamos y ya recorrimos 8 ciudades
-        return self.city_name == origin_city and self.cities_traveled == 8
+        return self.city_name == origin_city and self.cities_traveled == 9
     
     def expand(self) -> list: # Función Expand, en esta también se calcula la distancia total viaja de cada off spring
         off_springs:list[city] = []
