@@ -17,12 +17,12 @@ routes = {
 lineal_distance = {
     # Jesús
     'Amsterdam': {},
-    'Andorra': {'Amsterdam': 1125, 'Andorra': 0, 'Berlin': 1424, 'Bern': 680, 'Brussels': 952, 'Lisbon': 994, 'Luxembourg': 865, 'Madrid': 494, 'Paris': 709, 'Rome': 908, 'Vienna': 1321, 'Warsaw': 1816}
+    'Andorra': {'Amsterdam': 1125, 'Andorra': 0, 'Berlin': 1424, 'Bern': 680, 'Brussels': 952, 'Lisbon': 994, 'Luxembourg': 865, 'Madrid': 494, 'Paris': 709, 'Rome': 908, 'Vienna': 1321, 'Warsaw': 1816},
     'Berlin': {},
     # Rebeca
-    'Bern': {},
-    'Brussels': {},
-    'Lisbon': {},
+    'Bern': {'Amsterdam': 630, 'Andorra': 915, 'Berlin': 753, 'Bern': 0, 'Brussels': 489, 'Lisbon': 1627, 'Luxembourg': 375, 'Madrid': 1152, 'Paris': 435, 'Rome': 689, 'Vienna': 684, 'Warsaw': 1138},
+    'Brussels': {'Amsterdam': 173, 'Andorra': 1158, 'Berlin': 650, 'Bern': 489, 'Brussels': 0, 'Lisbon': 1713, 'Luxembourg': 118, 'Madrid': 1317, 'Paris': 264, 'Rome': 1173, 'Vienna': 915, 'Warsaw': 1160},
+    'Lisbon': {'Amsterdam': 1863, 'Andorra': 783, 'Berlin': 2312, 'Bern': 1627, 'Brussels': 1713, 'Lisbon': 0, 'Luxembourg': 1707, 'Madrid': 502, 'Paris': 1453, 'Rome': 1863, 'Vienna': 2299, 'Warsaw': 2759},
     # Najar
     'Luxembourg': {},
     'Madrid': {},
