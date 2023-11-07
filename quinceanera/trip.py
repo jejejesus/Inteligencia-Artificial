@@ -15,8 +15,22 @@ routes = {
 }
 # Tabla de distancias lineales a Bucarest
 lineal_distance = {
+    # Jesús
     'Amsterdam': {},
     'Andorra': {'Amsterdam': 1125, 'Andorra': 0, 'Berlin': 1424, 'Bern': 680, 'Brussels': 952, 'Lisbon': 994, 'Luxembourg': 865, 'Madrid': 494, 'Paris': 709, 'Rome': 908, 'Vienna': 1321, 'Warsaw': 1816}
+    'Berlin': {},
+    # Rebeca
+    'Bern': {},
+    'Brussels': {},
+    'Lisbon': {},
+    # Najar
+    'Luxembourg': {},
+    'Madrid': {},
+    'Paris': {},
+    # Héctor
+    'Rome': {},
+    'Vienna': {},
+    'Warsaw': {}
 }
 
 origin_city = 'Andorra'
