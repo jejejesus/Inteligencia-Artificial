@@ -34,9 +34,11 @@ lineal_distance = {
 
     'Paris': {'Amsterdam': 430, 'Andorra': 709, 'Berlin': 880, 'Bern': 434, 'Brussels': 263, 'Lisbon': 1452, 'Luxembourg': 286, 'Madrid': 1052, 'Paris': 0, 'Rome': 1105, 'Vienna': 1033, 'Warsaw': 1366},
     # Héctor
-    'Rome': {},
-    'Vienna': {},
-    'Warsaw': {}
+    'Rome': {'Amsterdam': 1296, 'Andorra': 908, 'Berlin': 522, 'Bern': 684, 'Brussels': 1173, 'Lisbon': 1863, 'Luxembourg': 988, 'Madrid': 1364, 'Paris': 1105, 'Rome': 0, 'Vienna': 761, 'Warsaw': 1310},
+
+    'Vienna': {'Amsterdam': 937, 'Andorra': 1321, 'Berlin': 880, 'Bern': 434, 'Brussels': 915, 'Lisbon': 2299, 'Luxembourg': 764, 'Madrid': 1809, 'Paris': 1033, 'Rome': 761, 'Vienna': 0, 'Warsaw': 553},
+    
+    'Warsaw': {'Amsterdam': 1096, 'Andorra': 1816, 'Berlin': 517, 'Bern': 1138, 'Brussels': 1160, 'Lisbon': 2759, 'Luxembourg': 1080, 'Madrid': 2289, 'Paris': 1366, 'Rome': 1310, 'Vienna': 553, 'Warsaw': 0}
 }
 
 origin_city = 'Andorra'
