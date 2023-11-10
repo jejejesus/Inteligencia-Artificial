@@ -30,7 +30,7 @@ lineal_distance = {
 
 # Tabla A*
 a_star = {
-    'Amsterdam': {'Amsterdam': 0, 'Andorra': 0, 'Berlin': 0, 'Bern': 0, 'Brussels': 0, 'Lisbon': 0, 'Luxembourg': 0, 'Madrid': 0, 'Paris': 0, 'Rome': 0, 'Vienna': 0, 'Warsaw': 0},
+    'Amsterdam': {'Amsterdam': 888, 'Andorra': 0, 'Berlin': 0, 'Bern': 0, 'Brussels': 0, 'Lisbon': 0, 'Luxembourg': 0, 'Madrid': 0, 'Paris': 0, 'Rome': 0, 'Vienna': 0, 'Warsaw': 0},
 
     'Andorra': {'Amsterdam': 0, 'Andorra': 0, 'Berlin': 0, 'Bern': 0, 'Brussels': 0, 'Lisbon': 0, 'Luxembourg': 0, 'Madrid': 0, 'Paris': 0, 'Rome': 0, 'Vienna': 0, 'Warsaw': 0},
 
