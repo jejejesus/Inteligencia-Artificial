@@ -56,11 +56,11 @@ class city: # Clase City
         return f"City: {self.city_name:10}, Traveled distance: {str(self.distance_traveled):>5}, Heuristic: {str(self.heuristic()):>5}{f', Previous city: {self.previous_city.city_name}' if self.previous_city != None else ''}"
 
 def route_str(end_city:city, route:str = "") -> str: # Función que recibe una ciudad y retorna un string con la ruta que se tomó para llegar a ella
-    route = (end_city.city_name + "city(\"" + str(end_city.distance_traveled) + "\", previos_city=") + route + ")"
+    route = ("\'" + end_city.city_name + "', ") + route
     if end_city.previous_city != None:
-        return route_str(end_city.previous_city, route)
+        return  f"{str(end_city.distance_traveled):>4}" + ", " + route_str(end_city.previous_city, route)
     else:
-        return route[0:-4] + ""
+        return  route[0:-2]
 
 def route_list(end_city:city, route:list[str] = []) -> list[str]: # Función que recibe una ciudad y retorna un lista con la ruta que se tomó para llegar a ella
     route.append(end_city.city_name)
