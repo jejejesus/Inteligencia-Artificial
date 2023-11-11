@@ -29,33 +29,6 @@ lineal_distance = {
 }
 
 # Tabla A*
-'''
-a_star = {
-    'Amsterdam': {'Amsterdam': , 'Andorra': 0, 'Berlin': 0, 'Bern': 0, 'Brussels': 0, 'Lisbon': 0, 'Luxembourg': 0, 'Madrid': 0, 'Paris': 0, 'Rome': 0, 'Vienna': 0, 'Warsaw': 0},
-
-    'Andorra': {'Amsterdam': 0, 'Andorra': 0, 'Berlin': 0, 'Bern': 0, 'Brussels': 0, 'Lisbon': 0, 'Luxembourg': 0, 'Madrid': 0, 'Paris': 0, 'Rome': 0, 'Vienna': 0, 'Warsaw': 0},
-
-    'Berlin': {'Amsterdam': 0, 'Andorra': 0, 'Berlin': 0, 'Bern': 0, 'Brussels': 0, 'Lisbon': 0, 'Luxembourg': 0, 'Madrid': 0, 'Paris': 0, 'Rome': 0, 'Vienna': 0, 'Warsaw': 0},
-
-    'Bern': {'Amsterdam': 0, 'Andorra': 0, 'Berlin': 0, 'Bern': 0, 'Brussels': 0, 'Lisbon': 0, 'Luxembourg': 0, 'Madrid': 0, 'Paris': 0, 'Rome': 0, 'Vienna': 0, 'Warsaw': 0},
-
-    'Brussels': {'Amsterdam': 0, 'Andorra': 0, 'Berlin': 0, 'Bern': 0, 'Brussels': 0, 'Lisbon': 0, 'Luxembourg': 0, 'Madrid': 0, 'Paris': 0, 'Rome': 0, 'Vienna': 0, 'Warsaw': 0},
-
-    'Lisbon': {'Amsterdam': 0, 'Andorra': 0, 'Berlin': 0, 'Bern': 0, 'Brussels': 0, 'Lisbon': 0, 'Luxembourg': 0, 'Madrid': 0, 'Paris': 0, 'Rome': 0, 'Vienna': 0, 'Warsaw': 0},
-
-    'Luxembourg': {'Amsterdam': 0, 'Andorra': 0, 'Berlin': 0, 'Bern': 0, 'Brussels': 0, 'Lisbon': 0, 'Luxembourg': 0, 'Madrid': 0, 'Paris': 0, 'Rome': 0, 'Vienna': 0, 'Warsaw': 0},
-
-    'Madrid': {'Amsterdam': 0, 'Andorra': 0, 'Berlin': 0, 'Bern': 0, 'Brussels': 0, 'Lisbon': 0, 'Luxembourg': 0, 'Madrid': 0, 'Paris': 0, 'Rome': 0, 'Vienna': 0, 'Warsaw': 0},
-
-    'Paris': {'Amsterdam': 0, 'Andorra': 0, 'Berlin': 0, 'Bern': 0, 'Brussels': 0, 'Lisbon': 0, 'Luxembourg': 0, 'Madrid': 0, 'Paris': 0, 'Rome': 0, 'Vienna': 0, 'Warsaw': 0},
-
-    'Rome': {'Amsterdam': 0, 'Andorra': 0, 'Berlin': 0, 'Bern': 0, 'Brussels': 0, 'Lisbon': 0, 'Luxembourg': 0, 'Madrid': 0, 'Paris': 0, 'Rome': 0, 'Vienna': 0, 'Warsaw': 0},
-
-    'Vienna': {'Amsterdam': 0, 'Andorra': 0, 'Berlin': 0, 'Bern': 0, 'Brussels': 0, 'Lisbon': 0, 'Luxembourg': 0, 'Madrid': 0, 'Paris': 0, 'Rome': 0, 'Vienna': 0, 'Warsaw': 0},
-
-    'Warsaw': {'Amsterdam': 0, 'Andorra': 0, 'Berlin': 0, 'Bern': 0, 'Brussels': 0, 'Lisbon': 0, 'Luxembourg': 0, 'Madrid': 0, 'Paris': 0, 'Rome': 0, 'Vienna': 0, 'Warsaw': 0}
-}
-'''
 # [0]: Distancia real, [1:-1]: Ruta
 routes_cities = [
     [657, 'Amsterdam', 'Berlin'],
@@ -145,3 +118,31 @@ coor = {
     'Vienna': (48.2086, 16.3768),
     'Warsaw': (52.2252, 20.9980),
 }
+
+'''
+a_star = {
+    'Amsterdam': {'Amsterdam': , 'Andorra': 0, 'Berlin': 0, 'Bern': 0, 'Brussels': 0, 'Lisbon': 0, 'Luxembourg': 0, 'Madrid': 0, 'Paris': 0, 'Rome': 0, 'Vienna': 0, 'Warsaw': 0},
+
+    'Andorra': {'Amsterdam': 0, 'Andorra': 0, 'Berlin': 0, 'Bern': 0, 'Brussels': 0, 'Lisbon': 0, 'Luxembourg': 0, 'Madrid': 0, 'Paris': 0, 'Rome': 0, 'Vienna': 0, 'Warsaw': 0},
+
+    'Berlin': {'Amsterdam': 0, 'Andorra': 0, 'Berlin': 0, 'Bern': 0, 'Brussels': 0, 'Lisbon': 0, 'Luxembourg': 0, 'Madrid': 0, 'Paris': 0, 'Rome': 0, 'Vienna': 0, 'Warsaw': 0},
+
+    'Bern': {'Amsterdam': 0, 'Andorra': 0, 'Berlin': 0, 'Bern': 0, 'Brussels': 0, 'Lisbon': 0, 'Luxembourg': 0, 'Madrid': 0, 'Paris': 0, 'Rome': 0, 'Vienna': 0, 'Warsaw': 0},
+
+    'Brussels': {'Amsterdam': 0, 'Andorra': 0, 'Berlin': 0, 'Bern': 0, 'Brussels': 0, 'Lisbon': 0, 'Luxembourg': 0, 'Madrid': 0, 'Paris': 0, 'Rome': 0, 'Vienna': 0, 'Warsaw': 0},
+
+    'Lisbon': {'Amsterdam': 0, 'Andorra': 0, 'Berlin': 0, 'Bern': 0, 'Brussels': 0, 'Lisbon': 0, 'Luxembourg': 0, 'Madrid': 0, 'Paris': 0, 'Rome': 0, 'Vienna': 0, 'Warsaw': 0},
+
+    'Luxembourg': {'Amsterdam': 0, 'Andorra': 0, 'Berlin': 0, 'Bern': 0, 'Brussels': 0, 'Lisbon': 0, 'Luxembourg': 0, 'Madrid': 0, 'Paris': 0, 'Rome': 0, 'Vienna': 0, 'Warsaw': 0},
+
+    'Madrid': {'Amsterdam': 0, 'Andorra': 0, 'Berlin': 0, 'Bern': 0, 'Brussels': 0, 'Lisbon': 0, 'Luxembourg': 0, 'Madrid': 0, 'Paris': 0, 'Rome': 0, 'Vienna': 0, 'Warsaw': 0},
+
+    'Paris': {'Amsterdam': 0, 'Andorra': 0, 'Berlin': 0, 'Bern': 0, 'Brussels': 0, 'Lisbon': 0, 'Luxembourg': 0, 'Madrid': 0, 'Paris': 0, 'Rome': 0, 'Vienna': 0, 'Warsaw': 0},
+
+    'Rome': {'Amsterdam': 0, 'Andorra': 0, 'Berlin': 0, 'Bern': 0, 'Brussels': 0, 'Lisbon': 0, 'Luxembourg': 0, 'Madrid': 0, 'Paris': 0, 'Rome': 0, 'Vienna': 0, 'Warsaw': 0},
+
+    'Vienna': {'Amsterdam': 0, 'Andorra': 0, 'Berlin': 0, 'Bern': 0, 'Brussels': 0, 'Lisbon': 0, 'Luxembourg': 0, 'Madrid': 0, 'Paris': 0, 'Rome': 0, 'Vienna': 0, 'Warsaw': 0},
+
+    'Warsaw': {'Amsterdam': 0, 'Andorra': 0, 'Berlin': 0, 'Bern': 0, 'Brussels': 0, 'Lisbon': 0, 'Luxembourg': 0, 'Madrid': 0, 'Paris': 0, 'Rome': 0, 'Vienna': 0, 'Warsaw': 0}
+}
+'''
