@@ -1,4 +1,5 @@
 from itertools import permutations
+from tables import a_star
 
 origin_city = "Paris"
 
@@ -49,6 +50,18 @@ def all_permutations_str(permutations:list[list[str]]): # Función que imprime t
     for permutation in permutations:
         print(permutation)
 
+def evaluate_permutation(cities:list[str]) -> int: # Función que calcula el costo de una permutación, utilizando la tabla de costos A*
+    final_cost = 0
+
+    for index in range(0, len(cities)):
+        if index + 1 < len(cities): # Mientras haya costos por sumar
+            first_city = cities[index]
+            next_city = cities[index + 1]
+            actual_cost = a_star[first_city][next_city]
+            final_cost = final_cost + actual_cost
+
+    return final_cost
+
 def a_star_search(frontier:list[city]) -> tuple[str, city]: # Función de búsqueda A*
     if frontier == []: # Verificamos si frontier está vacío
         return "Solution not found", None
@@ -66,3 +79,5 @@ def a_star_search(frontier:list[city]) -> tuple[str, city]: # Función de búsqu
 
 possibilities = all_permutations(["Andorra", "Madrid", "Paris", "Lisbon"])
 all_permutations_str(possibilities)
+
+print(evaluate_permutation(["Andorra", "Madrid", "Paris"]))
