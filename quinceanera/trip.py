@@ -1,4 +1,4 @@
-# Rutas disponibles desde cada ciudad
+from itertools import permutations
 
 origin_city = "Paris"
 
@@ -41,6 +41,13 @@ def visited_list(end_city:city, route:list[str] = []) -> list[str]: # Función q
             return visited_list(end_city.previous_city, route)
         else:
             return route[1:]
+        
+def all_permutations(cities:list[str]) -> list[list[str]]: # Función que recibe una lista de ciudades y retorna todas sus posibles permutaciones
+    return list(permutations(cities))
+
+def all_permutations_str(permutations:list[list[str]]): # Función que imprime todas las permutaciones generadas
+    for permutation in permutations:
+        print(permutation)
 
 def a_star_search(frontier:list[city]) -> tuple[str, city]: # Función de búsqueda A*
     if frontier == []: # Verificamos si frontier está vacío
@@ -56,3 +63,6 @@ def a_star_search(frontier:list[city]) -> tuple[str, city]: # Función de búsqu
     frontier.sort(key=city.heuristic) # Ordenamos frontier según la heurística
 
     return a_star_search(frontier)
+
+possibilities = all_permutations(["Andorra", "Madrid", "Paris", "Lisbon"])
+all_permutations_str(possibilities)
