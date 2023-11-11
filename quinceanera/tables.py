@@ -1,11 +1,11 @@
 routes = {
-    'Amsterdam': {'Berlin': 657, 'Brussels': 210, 'Luxembourg': 391, 'Vienna': 1145},
+    'Amsterdam': {'Berlin': 657, 'Brussels': 210, 'Vienna': 1145},
     'Andorra': {'Bern': 1044, 'Madrid': 619, 'Paris': 864, 'Rome': 1385},
     'Berlin': {'Amsterdam': 657,'Bern': 956, 'Brussels': 868, 'Luxembourg': 763, 'Rome': 1503, 'Vienna': 681, 'Warsaw': 574},
     'Bern': {'Andorra': 1044, 'Berlin': 957, 'Luxembourg': 447, 'Paris': 564, 'Rome': 851, 'Vienna': 944, 'Warsaw': 1444},
     'Brussels': {'Amsterdam': 210, 'Berlin': 868, 'Luxembourg': 224, 'Paris': 312},
     'Lisbon': {'Madrid': 633},
-    'Luxembourg': {'Amsterdam': 391, 'Berlin': 763, 'Bern': 447, 'Brussels': 763, 'Paris': 373, 'Vienna': 939},
+    'Luxembourg': {'Amsterdam': 391, 'Berlin': 763, 'Bern': 447, 'Brussels': 224, 'Paris': 373, 'Vienna': 939},
     'Madrid': {'Andorra': 619, 'Lisbon': 633, 'Paris': 1275},
     'Paris': {'Andorra': 864, 'Bern': 564, 'Brussels': 312, 'Luxembourg': 373, 'Madrid': 1275},
     'Rome': {'Andorra': 1385, 'Bern': 851, 'Vienna': 1122},

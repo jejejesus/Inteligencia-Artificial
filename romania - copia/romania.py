@@ -1,14 +1,14 @@
 # Rutas disponibles desde cada ciudad
 routes = {
-    'Amsterdam': {'Berlin': 657, 'Brussels': 210, 'Luxembourg': 391, 'Vienna': 1145},
+    'Amsterdam': {'Berlin': 657, 'Brussels': 210, 'Vienna': 1145},
     'Andorra': {'Bern': 1044, 'Madrid': 619, 'Paris': 864, 'Rome': 1385},
     'Berlin': {'Amsterdam': 657,'Bern': 956, 'Brussels': 868, 'Luxembourg': 763, 'Rome': 1503, 'Vienna': 681, 'Warsaw': 574},
     'Bern': {'Andorra': 1044, 'Berlin': 957, 'Luxembourg': 447, 'Paris': 564, 'Rome': 851, 'Vienna': 944, 'Warsaw': 1444},
     'Brussels': {'Amsterdam': 210, 'Berlin': 868, 'Luxembourg': 224, 'Paris': 312},
-    'Lisbon': {'Madrid': 633, 'Paris': 1736},
-    'Luxembourg': {'Amsterdam': 391, 'Berlin': 763, 'Bern': 447, 'Brussels': 763, 'Paris': 373, 'Vienna': 939},
+    'Lisbon': {'Madrid': 633},
+    'Luxembourg': {'Berlin': 763, 'Bern': 447, 'Brussels': 224, 'Paris': 373, 'Vienna': 939},
     'Madrid': {'Andorra': 619, 'Lisbon': 633, 'Paris': 1275},
-    'Paris': {'Andorra': 864, 'Bern': 564, 'Brussels': 312, 'Lisbon': 1736, 'Luxembourg': 373, 'Madrid': 1275},
+    'Paris': {'Andorra': 864, 'Bern': 564, 'Brussels': 312, 'Luxembourg': 373, 'Madrid': 1275},
     'Rome': {'Andorra': 1385, 'Bern': 851, 'Vienna': 1122},
     'Vienna': {'Amsterdam': 1145, 'Berlin': 681, 'Bern': 944, 'Luxembourg': 939, 'Rome': 1122, 'Warsaw': 727},
     'Warsaw': {'Berlin': 574, 'Bern': 1444, 'Vienna': 727}              
@@ -29,7 +29,7 @@ lineal_distance = {
     'Warsaw': {'Amsterdam': 1096, 'Andorra': 1816, 'Berlin': 517, 'Bern': 1138, 'Brussels': 1160, 'Lisbon': 2759, 'Luxembourg': 1080, 'Madrid': 2289, 'Paris': 1366, 'Rome': 1310, 'Vienna': 553, 'Warsaw': 0}
 }
 
-destine_city = "Rome"
+destine_city = "Amsterdam"
 
 class city: # Clase City
     city_name:str = ""
