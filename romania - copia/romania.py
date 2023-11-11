@@ -29,7 +29,7 @@ lineal_distance = {
     'Warsaw': {'Amsterdam': 1096, 'Andorra': 1816, 'Berlin': 517, 'Bern': 1138, 'Brussels': 1160, 'Lisbon': 2759, 'Luxembourg': 1080, 'Madrid': 2289, 'Paris': 1366, 'Rome': 1310, 'Vienna': 553, 'Warsaw': 0}
 }
 
-destine_city = "Amsterdam"
+destine_city = "Rome"
 
 class city: # Clase City
     city_name:str = ""
