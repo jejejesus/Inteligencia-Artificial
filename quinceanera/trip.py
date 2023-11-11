@@ -17,6 +17,7 @@ def evaluate_permutation(cities:list[str]) -> int: # Función que calcula el cos
         for route in routes_cities:
             if (route[1] == city and route[-1] == next_city) or (route[-1] == city and route[1] == next_city):
                 final_cost += route[0]
+                break
 
     return final_cost
 
