@@ -1,7 +1,7 @@
 from romania import city, a_star_search, route_str
 
 def main(): # Método main
-    origin = "Luxembourg"
+    origin = "Vienna"
     initial_city = city(origin) # Se declara la ciudad inicial
     frontier:list[city] = []
     frontier.append(initial_city) # Se agrega a la frontera

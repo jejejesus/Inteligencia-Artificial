@@ -32,13 +32,13 @@ lineal_distance = {
 # [0]: Distancia real, [1:-1]: Ruta
 routes_cities = [
     [657, 'Amsterdam', 'Berlin'],
-    [838, 'Amsterdam', 'Luxembourg', 'Bern'],
+    [881, 'Amsterdam', 'Brussels', 'Luxembourg', 'Bern'],
     [210, 'Amsterdam', 'Brussels'],
     [2258,'Amsterdam', 'Brussels', 'Paris', 'Lisbon'],
-    [391, 'Amsterdam', 'Luxembourg'],
+    [434, 'Amsterdam', 'Brussels', 'Luxembourg'],
     [1797, 'Amsterdam', 'Brussels', 'Paris', 'Madrid'],
     [522, 'Amsterdam', 'Brussels', 'Paris'],
-    [1689, 'Amsterdam', 'Luxembourg', 'Bern', 'Rome'],
+    [1732, 'Amsterdam', 'Brussels', 'Luxembourg', 'Bern', 'Rome'],
     [1145, 'Amsterdam', 'Vienna'],
     [1231, 'Amsterdam', 'Berlin', 'Warsaw'],
     #Andorra
@@ -92,16 +92,23 @@ routes_cities = [
     [1648, 'Luxembourg', 'Paris', 'Madrid'],
     [373, 'Luxembourg', 'Paris'],
     [1298, 'Luxembourg', 'Bern', 'Rome'],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    []
+    [939, 'Luxembourg', 'Vienna'],
+    [1337, 'Luxembourg', 'Berlin', 'Warsaw'],
+    #Madrid
+    [1275, 'Madrid', 'Paris'],
+    [2004, 'Madrid', 'Andorra', 'Rome'],
+    [2587, 'Madrid', 'Paris', 'Luxembourg', 'Vienna'],
+    [2985, 'Madrid', 'Paris', 'Luxembourg', 'Berlin', 'Warsaw'],
+    #Paris
+    [1415, 'Paris', 'Bern', 'Rome'],
+    [1415,  'Paris', 'Bern', 'Rome'],
+    [1710,  'Paris', 'Luxembourg', 'Berlin', 'Warsaw'],
+    #Rome
+    [1122, 'Rome', 'Vienna'],
+    [1849, 'Rome', 'Vienna', 'Warsaw'],
+    #Vienna
+    [727, 'Vienna', 'Warsaw']
+    
 ]
 
 coor = {
