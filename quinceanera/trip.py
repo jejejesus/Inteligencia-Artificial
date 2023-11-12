@@ -11,6 +11,7 @@ def all_permutations(cities:list[str]) -> list[list[str]]: # Función que recibe
     return permutations_return
 
 def evaluate_permutation(cities:list[str]) -> int: # Función que calcula el costo de una permutación, utilizando la tabla de costos A*
+    if len(cities) <= 2: return 0
     final_cost = 0
     for city in cities[0:-1]:
         next_city = cities[cities.index(city) + 1]
