@@ -1,7 +1,7 @@
 import tkinter as tk
 from random import randrange
-from tkinter import ttk, DISABLED, NORMAL
-from trip import shortest_trip
+from tkinter import ttk, DISABLED, NORMAL, messagebox
+from trip import shortest_trip, route_str
 
 def obtain():
     return
@@ -17,13 +17,14 @@ def create_input_frame(container):
     check = []
 
     frame = ttk.Frame(container)
+    
 
     # grid layout for the input frame
     frame.columnconfigure(0, weight=1)
 
     # Origin city
     ttk.Label(frame, text='Origin city').grid(column=0, row=0, sticky=tk.W)
-    combo = ttk.Combobox(frame, width=30, textvariable=origin_city)
+    combo = ttk.Combobox(frame, width=30, textvariable=origin_city, state='readonly')
     def origin_city_changed(event): 
         cities_to_visit[combo.current()].set(True)
         for i in range(len(check)):
@@ -141,10 +142,8 @@ def create_input_frame(container):
                 to_visit.append(combo['values'][i])
         origin = combo['values'][combo.current()]
         to_visit.remove(origin)
-        print(origin)
-        print(to_visit)
-        aux = shortest_trip(origin, to_visit)
-        print(aux)
+        trip, distance = shortest_trip(origin, to_visit)
+        messagebox.showinfo(title='Route to take', message=f'Order: {route_str(trip)}\n\nTotal distance: {str(distance)} km')
 
     ttk.Button(frame, text='Obtain trip', command=shortest_trip_obtain).grid(column=3, row=0)
     ttk.Button(frame, text='8 Random', command=random_select).grid(column=3, row=2)
@@ -162,6 +161,7 @@ def create_input_frame(container):
 def main():
     root = tk.Tk()
     root.title('Quinceañera Eurotrip')
+    root.eval('tk::PlaceWindow . center')
     root.resizable(0, 0)
 
     # layout on the root window

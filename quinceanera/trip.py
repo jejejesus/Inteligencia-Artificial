@@ -22,11 +22,16 @@ def evaluate_permutation(cities:list[str]) -> int: # Función que calcula el cos
 
     return final_cost
 
-def shortest_trip(origin_city:str, cities:list[str]) -> list[str]:
-    permutations = all_permutations([origin_city] + cities)
-    permutations.sort(key=evaluate_permutation)
-    return permutations[0]
+def shortest_trip(origin_city:str, cities:list[str]) -> (list[str], int):
+    permutations_aux = all_permutations([origin_city] + cities)
+    permutations_aux.sort(key=evaluate_permutation)
+    return permutations_aux[0], evaluate_permutation(permutations_aux[0])
 
+def route_str(cities:list[str]) -> str:
+    route = ""
+    for city in cities:
+        route += city + " -> "
+    return route[0:-4].upper()
 
 '''
 def a_star_search(frontier:list[city]) -> tuple[str, city]: # Función de búsqueda A*
