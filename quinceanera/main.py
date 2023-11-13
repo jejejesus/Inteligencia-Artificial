@@ -7,32 +7,26 @@ def obtain():
     return
 
 def create_input_frame(container):
-
-    origin_city = tk.StringVar
-
-    cities_to_visit = [tk.BooleanVar(value=True)]
+    cities_to_visit = [tk.BooleanVar(value=True)] # Lista de las ciudades que se van a visitar
     for i in range(12):
         cities_to_visit.append(tk.BooleanVar(value=False))
-
-    check = []
-
+    check = [] # Lista en la que ordenamos los checkbox de la ventana
     frame = ttk.Frame(container)
-    
 
     # grid layout for the input frame
     frame.columnconfigure(0, weight=1)
 
     # Origin city
     ttk.Label(frame, text='Origin city').grid(column=0, row=0, sticky=tk.W)
-    combo = ttk.Combobox(frame, width=30, textvariable=origin_city, state='readonly')
-    def origin_city_changed(event): 
+    combo = ttk.Combobox(frame, width=30, state='readonly')
+    def origin_city_changed(event): # Función del evento de cambio de valor del combobox
         cities_to_visit[combo.current()].set(True)
         for i in range(len(check)):
             check[i].config(state=NORMAL)
         check[combo.current()].config(state=DISABLED)
 
-    combo['values'] = ['Amsterdam', 'Andorra', 'Berlin', 'Bern', 'Brussels', 'Lisbon', 'Luxembourg', 'Madrid', 'Paris', 'Rome', 'Vienna', 'Warsaw']
-    combo.set('Amsterdam')
+    combo['values'] = ['Amsterdam', 'Andorra', 'Berlin', 'Bern', 'Brussels', 'Lisbon', 'Luxembourg', 'Madrid', 'Paris', 'Rome', 'Vienna', 'Warsaw'] # Valores del combobox
+    combo.set('Amsterdam') # Inicializa en Amsterdam
     combo.bind("<<ComboboxSelected>>", origin_city_changed)
     combo.focus()
     combo.grid(column=1, row=0, sticky=tk.W)
@@ -114,7 +108,7 @@ def create_input_frame(container):
         variable=cities_to_visit[11]))
     check[11].grid(column=2, row=6, sticky=tk.W)
 
-    def clear_all(origin:int = 0):
+    def clear_all(origin:int = 0): # Función que quita la selección de todas las ciudades y asigna a Amsterdam como origen
         check[origin].config(state=DISABLED)
         for checks in check:
             checks.config(state=NORMAL)
@@ -124,7 +118,7 @@ def create_input_frame(container):
         cities_to_visit[origin].set(True)
         combo.set(combo['values'][origin])
 
-    def random_select(n:int = 8):
+    def random_select(n:int = 8): # Función para seleccionar n ciudades al azar y selecciona una como origen
         indexes = []
         while len(indexes) < n:
             aux = randrange(0, 12, 1)
@@ -135,25 +129,36 @@ def create_input_frame(container):
         for i in indexes:
             cities_to_visit[i].set(True)
 
-    def shortest_trip_obtain():
+    def count_trues() -> int: # Función que retorna el número de ciudades seleccionadas
+        trues = 0
+        for city in cities_to_visit:
+            if city.get(): trues += 1
+        return trues
+
+    def shortest_trip_obtain(): #  Función que lee las ciudades seleccionadas y retorna la ruta más corta
+        if count_trues() > 8: # Validamos que se escojan menos de 9 ciudades
+            messagebox.showwarning(title='Alert', message='More than 8 cities selected')
+            return
+        if count_trues() < 3: # Validamos que se escojan más de 2 ciudades
+            messagebox.showwarning(title='Alert', message='Less than 3 cities selected')
+            return
         to_visit = []
-        for i in range(len(cities_to_visit) - 1):
+        for i in range(len(cities_to_visit) - 1): # Hacemos una lista con los nombres de las ciudades seleccionadas
             if cities_to_visit[i].get():
                 to_visit.append(combo['values'][i])
         origin = combo['values'][combo.current()]
         to_visit.remove(origin)
-        trip, distance = shortest_trip(origin, to_visit)
+        trip, distance = shortest_trip(origin, to_visit) # Llamamos al método de viaje más corto
         messagebox.showinfo(title='Route to take', message=f'Order: {route_str(trip)}\n\nTotal distance: {str(distance)} km')
 
+    # Botones
     ttk.Button(frame, text='Obtain trip', command=shortest_trip_obtain).grid(column=3, row=0)
     ttk.Button(frame, text='8 Random', command=random_select).grid(column=3, row=2)
     ttk.Button(frame, text='Clear all', command=clear_all).grid(column=3, row=3)
     ttk.Button(frame, text='Quit', command=container.destroy).grid(column=3, row=7)
 
-
     for widget in frame.winfo_children():
         widget.grid(padx=5, pady=5)
-
 
     return frame
 
