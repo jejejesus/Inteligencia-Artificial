@@ -3,6 +3,10 @@ from itertools import permutations
 from random import randrange
 from tkinter import ttk, DISABLED, NORMAL, messagebox
 
+"""
+                Tablas.py
+"""
+
 routes = {
     'Amsterdam': {'Berlin': 657, 'Brussels': 210, 'Vienna': 1145},
     'Andorra': {'Bern': 1044, 'Madrid': 619, 'Paris': 864, 'Rome': 1385},
@@ -132,6 +136,10 @@ coor = {
 }
 
 origin_city = ""
+
+"""
+                Trip.py
+"""
         
 def all_permutations(origin_city:str, cities:list[str]) -> list[list[str]]: # Función que recibe una lista de ciudades y retorna todas sus posibles permutaciones
     permutations_return:list[list[str]] = []
@@ -160,6 +168,10 @@ def route_str(cities:list[str]) -> str:
     for city in cities:
         route += city + " -> "
     return route[0:-4].upper()
+
+"""
+                Main.py
+"""
 
 def obtain():
     return
